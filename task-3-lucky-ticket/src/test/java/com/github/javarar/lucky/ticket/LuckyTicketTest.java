@@ -7,19 +7,39 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LuckyTicketTest {
 
-    @DisplayName("Задание 7. Счастливый билет")
+    @DisplayName("Задание 7. Счастливый билет (CachedThreadPool)")
     @ParameterizedTest
-    @MethodSource("cases")
-    public void luckyTicketProbabilityTest(int serialNumberLength, double probability) {
-        throw new UnsupportedOperationException("реализуй меня");
+    @MethodSource("casesCached")
+    public void luckyTicketProbabilityCachedTest(int serialNumberLength, double expectedProbability) {
+        double actualProbability = LuckyTicket.luckyTicketProbabilityCached(serialNumberLength);
+        assertEquals(expectedProbability, actualProbability);
     }
 
-    private static Stream<Arguments> cases() {
-        throw new UnsupportedOperationException("реализуй меня");
+    private static Stream<Arguments> casesCached() {
+        return Stream.of(
+                Arguments.of(4, 0.067),
+                Arguments.of(6, 0.055252)
+                // Длительный по времени тест (~ 8 минут)
+//                Arguments.of(8, 0.0481603)
+        );
     }
 
+    @DisplayName("Задание 7. Счастливый билет (FixedThreadPool)")
+    @ParameterizedTest
+    @MethodSource("casesFixed")
+    public void luckyTicketProbabilityFixedTest(int serialNumberLength, double expectedProbability) {
+        double actualProbability = LuckyTicket.luckyTicketProbabilityFixed(serialNumberLength);
+        assertEquals(expectedProbability, actualProbability);
+    }
+
+    private static Stream<Arguments> casesFixed() {
+        return Stream.of(
+                Arguments.of(4, 0.067),
+                Arguments.of(6, 0.055252)
+        );
+    }
 }

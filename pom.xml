@@ -28,6 +28,7 @@
 
         <!-- libraries -->
         <lombok.version>1.18.22</lombok.version>
+        <log4j.version>2.23.1</log4j.version>
 
         <!-- tests -->
         <junit.version>5.8.2</junit.version>
@@ -70,6 +71,16 @@
 
     <dependencies>
         <!-- libraries -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

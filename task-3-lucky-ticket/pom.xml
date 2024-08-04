@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.github.javarar</groupId>
-        <artifactId>hw-1-threads-and-executors</artifactId>
+        <artifactId>hw-5</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
